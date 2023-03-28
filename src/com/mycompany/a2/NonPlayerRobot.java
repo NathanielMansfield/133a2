@@ -1,32 +1,36 @@
 package com.mycompany.a2;
 
-public class NonPlayerRobot extends Robot implements IStrategy {
+public class NonPlayerRobot extends Robot{
 
-	private String strat;
+	//private String strat;
 
-	public NonPlayerRobot(double x, double y, int steeringDir, int maxSpeed, String strat) {
+	private IStrategy strat;
+	
+	public NonPlayerRobot(double x, double y, int steeringDir, int maxSpeed, IStrategy strat) {
 		super(x, y, steeringDir, maxSpeed);
 		this.strat = strat;
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void setStrategy(String strat) {
-	this.strat = strat;
+	public void setStrategy(IStrategy strat) {
+		this.strat = strat;
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public String getStrategy() {
+	public void invokeStrategy() {
+		strat.apply();
+	}
+	
+	public IStrategy getStrategy() {
 		return strat;
 	}
 
-	public void switchStrategy() {
-		if (strat.equals("attack")) {
-			setStrategy("defend");
+	public void switchStrategy(Robot pc) {
+		if (strat instanceof Attack) {
+			strat = new Defend(this);
 		} else
-			setStrategy("attack");;
+			strat = new Attack(this,pc);
 		
 		setBase(getBase() + 1);
 	}
