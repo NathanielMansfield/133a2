@@ -30,26 +30,26 @@ public class Game extends com.codename1.ui.Form{
 	private Toolbar tb;
 	
 	
-	private Accelerate acc = new Accelerate(gw);
-	private Brake brake = new Brake(gw);
-	private ChangeStrat cStrat = new ChangeStrat(gw);
-	private CollideD droneCollide = new CollideD(gw);
-	private CollideES energyStationCollide = new CollideES(gw);
-	private CollideNPR nprCollide = new CollideNPR(gw);
-	private InformationAbout about = new InformationAbout();
-	private InformationHelp help = new InformationHelp();
-	private LTurn left = new LTurn(gw);
-	private RTurn right = new RTurn(gw);
-	private Tick tick = new Tick(gw);
-	private ToggleSound tSound = new ToggleSound();
-	
+		
 	
 	public Game() {
 		gw = new GameWorld();
 		sv = new ScoreView();
 		mv = new MapView();
 
-		
+		Accelerate acc = new Accelerate(gw);
+		Brake brake = new Brake(gw);
+		ChangeStrat cStrat = new ChangeStrat(gw);
+		CollideD droneCollide = new CollideD(gw);
+		CollideES energyStationCollide = new CollideES(gw);
+		CollideNPR nprCollide = new CollideNPR(gw);
+		InformationAbout about = new InformationAbout();
+		InformationHelp help = new InformationHelp();
+		LTurn left = new LTurn(gw);
+		RTurn right = new RTurn(gw);
+		Tick tick = new Tick(gw);
+		ToggleSound tSound = new ToggleSound();
+
 		
 		gw.addObserver(sv);
 		gw.addObserver(mv);
@@ -116,8 +116,8 @@ public class Game extends com.codename1.ui.Form{
 		tb.addCommandToSideMenu(acc);
 		tb.addCommandToRightBar(acc);
 		
-		gw.init();
 		this.show();
+		gw.init();
 		
 		//play();
 	}
